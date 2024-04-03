@@ -1,2 +1,2 @@
 # Wealthsimple Utilities
-- They implement features that Wealthsimple should have implemented 3 years ago.
+- Utilities to make it easier to work with Wealthsimple
