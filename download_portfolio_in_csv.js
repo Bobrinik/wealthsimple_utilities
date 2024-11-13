@@ -1,7 +1,10 @@
 // ==UserScript==
-// @name          jQuery Example
+// @name          Wealthsimple Download CSV Portfolio
 // @require       https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js
 // ==/UserScript==
+
+console.log("Here")
+
 
 function getFormattedDate() {
     var dateObj = new Date();
@@ -23,14 +26,15 @@ window.onload = function() {
           document.body.insertBefore(downloadButton, document.body.firstChild);
 
           function generateCSV() {
-              let separator = ",";
+            
               let csvContent = [];
-            	let header = ['Security', 'Name', 'Total_Value', 'Quantity', 'All_Time_Return', 'Per_All_time_Return', 'Today_Price', 'Per_Today_Price'];
+            	let header = ['Security', 'Name', 'Total_Value', 'Quantity',  'Today_Price', 'Per_Today_Price', 'All_Time_Return', 'Per_All_time_Return',];
             	
-            	csvContent.push(header.join(separator));
+            	csvContent.push(header.join(";"));
   						            
               $("tbody tr").each(function () {
                   let row = [];
+                	console.log(row);
                   $(this).find("td").each(function () {
                       $(this).find("p").each(function() {
                           row.push($(this).text());
@@ -41,7 +45,7 @@ window.onload = function() {
                   	row = row.slice(1);
                   }
                 	console.log(row);
-                  csvContent.push(row.join(separator));
+                  csvContent.push(row.join(";"));
               });
               return csvContent.join("\n");
           }
